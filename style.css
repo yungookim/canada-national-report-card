@@ -203,6 +203,7 @@ main {
   opacity: 0;
   /* Hidden initially for animation */
   transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .card-inner {

@@ -1,0 +1,459 @@
+:root {
+  --bg-color: #F5F5F7;
+  --text-primary: #1D1D1F;
+  --text-secondary: #86868B;
+  --accent-good: #34C759;
+  --accent-bad: #FF3B30;
+  --accent-mixed: #FF9500;
+  --accent-neutral: #8E8E93;
+  --card-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.5);
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+p,
+span {
+  margin: 0;
+  padding: 0;
+}
+
+/* Typography */
+h1 {
+  font-size: 56px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+}
+
+.subtitle {
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin-top: 8px;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.big-number {
+  font-family: "SF Pro Display", -apple-system, sans-serif;
+  font-size: 64px;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  display: block;
+}
+
+.label {
+  font-size: 15px;
+  color: var(--text-secondary);
+  font-weight: 400;
+  display: block;
+  margin-top: 4px;
+}
+
+.bad-highlight {
+  color: var(--accent-bad);
+  font-weight: 500;
+  display: block;
+  font-size: 15px;
+}
+
+.detail {
+  display: block;
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+/* Layout */
+/* Layout */
+main {
+  width: 100vw;
+  height: 100vh;
+  padding: 2vh 2vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+  height: 100%;
+  max-width: 1600px;
+}
+
+/* Hero Card (Center) */
+.hero-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  grid-column: 2;
+  /* Explicitly place in center */
+  grid-row: 2;
+  /* Explicitly place in center */
+  animation: fadeIn 1s ease-out;
+}
+
+/* Redefine Wide for grid logic if needed, or remove */
+
+
+/* Cards */
+.card {
+  background: transparent;
+  perspective: 1000px;
+  /* Remove fixed min-height, let grid dictate */
+  height: 100%;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  /* Fill the grid cell */
+  text-align: left;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-style: preserve-3d;
+  box-shadow: var(--shadow-soft);
+  border-radius: 30px;
+}
+
+.card-front,
+.card-back {
+  padding: 24px;
+  /* Slightly reduced padding for tighter fit */
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+
+  /* Tablet/Desktop tight: still try to fit, maybe reduce font */
+  h1 {
+    font-size: 40px;
+  }
+
+  .big-number {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  /* Mobile: Switch to scrolling stack */
+  main {
+    height: auto;
+    padding: 20px;
+    display: block;
+  }
+
+  .grid-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 20px;
+    height: auto;
+  }
+
+  .hero-card {
+    grid-column: auto;
+    grid-row: 1;
+    /* Move title to top on mobile */
+    margin-bottom: 40px;
+    height: 200px;
+  }
+
+  .card {
+    height: 300px;
+    /* Specific height for mobile scrolling */
+  }
+}
+
+/* Cards */
+/* Cards */
+.card {
+  background: transparent;
+  perspective: 1000px;
+  min-height: 300px;
+  opacity: 0;
+  /* Hidden initially for animation */
+  transform: translateY(30px);
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-style: preserve-3d;
+  box-shadow: var(--shadow-soft);
+  border-radius: 30px;
+}
+
+.card:hover .card-inner {
+  transform: rotateY(180deg);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 30px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid var(--glass-border);
+  box-sizing: border-box;
+}
+
+.card-front {
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.card-back {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  transform: rotateY(180deg);
+  align-items: center;
+  justify-content: center;
+}
+
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Sparkline Chart */
+.chart-container {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+svg.sparkline {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+path.line {
+  fill: none;
+  stroke: var(--text-primary);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+circle.point {
+  fill: var(--bg-color);
+  stroke: var(--text-primary);
+  stroke-width: 3;
+}
+
+.trend-label {
+  font-size: 15px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin-top: 5px;
+  /* Reduced margin to fit labels */
+}
+
+/* SVG Text Styles */
+text.year-label {
+  font-size: 10px;
+  fill: var(--text-secondary);
+  font-family: -apple-system, sans-serif;
+}
+
+text.year-label.start {
+  text-anchor: start;
+}
+
+text.year-label.end {
+  text-anchor: end;
+}
+
+.wide {
+  grid-column: span 2;
+}
+
+@media (max-width: 768px) {
+  .wide {
+    grid-column: span 1;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  .big-number {
+    font-size: 48px;
+  }
+
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.indicator.good {
+  background-color: var(--accent-good);
+  box-shadow: 0 0 10px var(--accent-good);
+}
+
+.indicator.bad {
+  background-color: var(--accent-bad);
+  box-shadow: 0 0 10px var(--accent-bad);
+}
+
+.indicator.mixed {
+  background-color: var(--accent-mixed);
+  box-shadow: 0 0 10px var(--accent-mixed);
+}
+
+.indicator.neutral {
+  background-color: var(--accent-neutral);
+}
+
+.divider {
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.05);
+  margin: 20px 0;
+}
+
+.metric-row {
+  display: flex;
+  gap: 40px;
+}
+
+footer {
+  text-align: center;
+  padding: 60px 0;
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+/* Sources List Styles */
+.sources-list {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 11px;
+  color: var(--text-secondary);
+  z-index: 10;
+  /* Ensure it sits above if needed */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  pointer-events: none;
+  /* Let clicks pass through if not interacting */
+}
+
+.source-label {
+  font-weight: 500;
+  cursor: pointer;
+  padding: 4px 12px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  pointer-events: auto;
+  /* Re-enable pointer for the label */
+  display: inline-block;
+  opacity: 0.6;
+}
+
+.source-label:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
+}
+
+.sources-list ul {
+  margin: 0;
+  padding: 8px 12px;
+  list-style: none;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 8px;
+  /* Space between list and label when expanded */
+  opacity: 0;
+  transform: translateY(10px) scale(0.95);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  position: absolute;
+  bottom: 30px;
+  /* Position above the label */
+  min-width: 140px;
+  visibility: hidden;
+}
+
+.sources-list:hover ul,
+.source-label:hover+ul,
+/* In case we want to hover the label to show */
+.sources-list ul:hover {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.sources-list li {
+  margin-bottom: 4px;
+  white-space: nowrap;
+}
+
+.sources-list li:last-child {
+  margin-bottom: 0;
+}

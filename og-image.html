@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1200, height=630, initial-scale=1.0">
+    <title>Canada 2025 OG Image</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        body {
+            width: 1200px;
+            height: 630px;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--bg-color);
+        }
+
+        .og-container {
+            width: 1080px;
+            /* ample padding */
+            height: 510px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .og-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .og-header h1 {
+            font-size: 80px;
+            margin-bottom: 10px;
+        }
+
+        .og-header .subtitle {
+            font-size: 32px;
+        }
+
+        .cards-row {
+            display: flex;
+            gap: 30px;
+            justify-content: space-between;
+            height: 240px;
+        }
+
+        .card {
+            flex: 1;
+            height: 100%;
+            opacity: 1;
+            /* Override animation opacity */
+            transform: none;
+            /* Override animation transform */
+        }
+
+        .card-inner {
+            border-radius: 24px;
+        }
+
+        /* Make text slightly larger for the image */
+        .card h2 {
+            font-size: 20px;
+        }
+
+        .big-number {
+            font-size: 72px;
+        }
+
+        .label {
+            font-size: 18px;
+        }
+
+        .bad-highlight {
+            font-size: 16px;
+        }
+
+        .detail {
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="og-container">
+        <div class="og-header">
+            <h1>Canada 2025</h1>
+            <p class="subtitle">National Dashboard</p>
+        </div>
+
+        <div class="cards-row">
+            <!-- Inflation -->
+            <section class="card glass">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="card-header">
+                            <h2>Inflation</h2>
+                            <span class="indicator good"></span>
+                        </div>
+                        <div class="card-body">
+                            <div class="metric-primary">
+                                <span class="big-number">2.1%</span>
+                                <span class="label">Lowest since 2020</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Wages -->
+            <section class="card glass">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="card-header">
+                            <h2>Wages</h2>
+                            <span class="indicator good"></span>
+                        </div>
+                        <div class="card-body">
+                            <div class="metric-primary">
+                                <span class="big-number">$32.51</span>
+                                <span class="label">Hourly Average</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Housing Starts -->
+            <section class="card glass">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="card-header">
+                            <h2>Housing</h2>
+                            <span class="indicator good"></span>
+                        </div>
+                        <div class="card-body">
+                            <div class="metric-primary">
+                                <span class="big-number">259k</span>
+                                <span class="label">5-Year Record</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+</body>
+
+</html>
